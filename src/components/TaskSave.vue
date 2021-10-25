@@ -2,7 +2,8 @@
     <div class="mt-4">
         <hr>
         <h2 class="font-weight-light">Salvar Tarefa</h2>
-        <form>
+
+        <form @submit.prevent="save">
             <div class="row">
                 <div :class="classColumn">
                     <div class="form-group">
@@ -10,7 +11,8 @@
                         <input
                             type="text"
                             class="form-control"
-                            placeholder="Título da tarefa">
+                            placeholder="Título da tarefa"
+                            v-model="taskLocal.title">
                     </div>
                 </div>
                 <div class="col-sm-2" v-if="task">
@@ -47,6 +49,12 @@ export default {
     computed: {
         classColumn() {
             return this.task ? 'col-sm-10' : 'col-sm-12'
+        }
+    },
+    methods: {
+        save(){
+            this.$emit('create', this.taskLocal)
+            this.taskLocal = {title: '', concluded: false}
         }
     }
 }
