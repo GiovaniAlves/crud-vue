@@ -3,15 +3,21 @@
 
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4">TASK MANAGER (VUE)</h1>
-                <p class="lead">Using the Axios library to make Ajax calls to a REST API.</p>
+                <h1 class="display-4">Gerenciador de Tarefas</h1>
+                <p class="lead">Usando a biblioteca Axios para chamadas Ajax à uma API REST.</p>
             </div>
         </div>
 
         <div class="container">
-
+            <TaskList />
         </div>
 
     </div>
 </template>
 
+<script>
+import TaskList from "./components/TaskList"
+export default {
+    components: {TaskList}
+}
+</script>
