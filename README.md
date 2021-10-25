@@ -1,4 +1,6 @@
-# crud-vue
+# Crud Vue.JS
+
+###Using the Axios library to make Ajax calls to a REST API. 
 
 ## Project setup
 ```
@@ -20,5 +22,9 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Running JSON Server to serve a fake REST API
+Use the command below inside the db directory
+```
+npm start
+```
+

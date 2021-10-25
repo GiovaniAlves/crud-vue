@@ -8,9 +8,9 @@
                     <div class="form-group">
                         <label>Título</label>
                         <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Título da tarefa">
+                            type="text"
+                            class="form-control"
+                            placeholder="Título da tarefa">
                     </div>
                 </div>
                 <div class="col-sm-2" v-if="task">
