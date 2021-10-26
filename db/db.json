@@ -7,12 +7,12 @@
     },
     {
       "title": "Aprender Vue",
-      "concluded": false,
+      "concluded": true,
       "id": 2
     },
     {
       "title": "Aprender Axios",
-      "concluded": false,
+      "concluded": true,
       "id": 3
     },
     {
@@ -21,9 +21,9 @@
       "id": 4
     },
     {
-      "title": "Aprender Vue Router",
+      "title": "Aprender Nuxt JS",
       "concluded": true,
-      "id": 5
+      "id": 6
     }
   ]
 }
