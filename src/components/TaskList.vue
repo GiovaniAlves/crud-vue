@@ -14,9 +14,9 @@
         </div>
     </div>
 
-    <ul class="list-group" v-if="tasks.length > 0">
+    <ul class="list-group" v-if="orderedTasks.length > 0">
         <TaskListItem
-            v-for="task in tasks"
+            v-for="task in orderedTasks"
             :key="task.id"
             :task="task"
             @edit="selectTaskForEditing"
@@ -53,6 +53,20 @@ export default {
             tasks: [],
             displayForm: false,
             selectedTask: undefined
+        }
+    },
+    computed: {
+        orderedTasks() {
+            return this.tasks.slice().sort( (task1, task2) => {
+                if(task1 === task2){
+                    return task1.title < task2.title
+                        ? -1
+                        : task1.title > task2.title
+                            ? 1
+                            : 0
+                }
+                return task1.concluded - task2.concluded
+            })
         }
     },
     created() {
