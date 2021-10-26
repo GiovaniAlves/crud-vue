@@ -17,8 +17,12 @@
                 </div>
                 <div class="col-sm-2" v-if="task">
                     <label>Tarefa Concluída?</label>
-                    <button class="btn btn-secondary btn-sm d-block">
-                        <i class="fa fa-check"></i>
+                    <button
+                        type="button"
+                        class="btn btn-sm d-block"
+                        :class="classButton"
+                        @click="taskLocal.concluded = !taskLocal.concluded">
+                            <i class="fa fa-check"></i>
                     </button>
                 </div>
             </div>
@@ -47,13 +51,22 @@ export default {
         }
     },
     computed: {
+        classButton(){
+            return this.taskLocal && this.taskLocal.concluded ? 'btn-success' : 'btn-secondary'
+        },
         classColumn() {
             return this.task ? 'col-sm-10' : 'col-sm-12'
+        },
+    },
+    watch: {
+        task() {
+            this.taskLocal = Object.assign({}, this.task)
         }
     },
     methods: {
         save(){
-            this.$emit('create', this.taskLocal)
+            const operation = this.task ? 'edit' : 'create'
+            this.$emit(operation, this.taskLocal)
             this.taskLocal = {title: '', concluded: false}
         }
     }

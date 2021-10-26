@@ -1,9 +1,9 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "title": "Aprender JavaScript",
-      "concluded": true
+      "title": "Aprender JavaScript 2",
+      "concluded": false,
+      "id": 1
     },
     {
       "id": 2,
@@ -24,6 +24,31 @@
       "title": "Aprender Vue Router",
       "concluded": false,
       "id": 5
+    },
+    {
+      "title": "Aprender Nuxt JS",
+      "concluded": false,
+      "id": 6
+    },
+    {
+      "title": "Aprender Vuetify",
+      "concluded": true,
+      "id": 7
+    },
+    {
+      "title": "Aprender Type Script 2",
+      "concluded": false,
+      "id": 8
+    },
+    {
+      "title": "Aprendendo a aprender 23",
+      "concluded": true,
+      "id": 9
+    },
+    {
+      "title": "Aprender",
+      "concluded": true,
+      "id": 10
     }
   ]
 }

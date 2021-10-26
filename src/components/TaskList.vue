@@ -18,14 +18,17 @@
         <TaskListItem
             v-for="task in tasks"
             :key="task.id"
-            :task="task"/>
+            :task="task"
+            @edit="selectTaskForEditing"/>
     </ul>
 
     <p v-else>Nenhuma tarefa criada.</p>
 
     <TaskSave
         v-if="displayForm"
-        @create="createTask"/>
+        :task="selectedTask"
+        @create="createTask"
+        @edit="editTask"/>
 
 </template>
 
@@ -46,7 +49,8 @@ export default {
     data() {
         return {
             tasks: [],
-            displayForm: false
+            displayForm: false,
+            selectedTask: undefined
         }
     },
     created() {
@@ -60,8 +64,24 @@ export default {
             axios.post(`${config.apiUrl}/tasks`, task)
                 .then((response) => {
                     this.tasks.push(response.data)
-                    this.displayForm = false
+                    this.reset()
                 })
+        },
+        editTask(task) {
+            axios.put(`${config.apiUrl}/tasks/${task.id}`, task)
+                .then( reponse => {
+                    let index = this.tasks.findIndex(t => t.id === task.id)
+                    this.tasks.splice(index, 1, reponse.data)
+                    this.reset()
+                })
+        },
+        selectTaskForEditing(task){
+            this.selectedTask = task
+            this.displayForm = true
+        },
+        reset(){
+            this.displayForm = false
+            this.selectedTask = undefined
         }
     }
 }
