@@ -7,7 +7,7 @@
         <div class="col-sm-2">
             <button
                 class="btn btn-primary float-right"
-                @click="displayForm = !displayForm">
+                @click="displayFormCreateTask">
                     <i class="fa fa-plus mr-2"></i>
                     <span>Criar</span>
             </button>
@@ -20,7 +20,8 @@
             :key="task.id"
             :task="task"
             @edit="selectTaskForEditing"
-            @delete="deleteTask"/>
+            @delete="deleteTask"
+            @conclude="editTask"/>
     </ul>
 
     <p v-else>Nenhuma tarefa criada.</p>
@@ -77,6 +78,13 @@ export default {
                         this.tasks.splice(index, 1)
                     })
             }
+        },
+        displayFormCreateTask() {
+            if(this.selectedTask){
+                this.selectedTask = undefined
+                return
+            }
+            this.displayForm = !this.displayForm
         },
         editTask(task) {
             axios.put(`${config.apiUrl}/tasks/${task.id}`, task)
