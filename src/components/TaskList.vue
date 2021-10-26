@@ -19,7 +19,8 @@
             v-for="task in tasks"
             :key="task.id"
             :task="task"
-            @edit="selectTaskForEditing"/>
+            @edit="selectTaskForEditing"
+            @delete="deleteTask"/>
     </ul>
 
     <p v-else>Nenhuma tarefa criada.</p>
@@ -67,11 +68,21 @@ export default {
                     this.reset()
                 })
         },
+        deleteTask(task){
+            const confirm = window.confirm(`Deseja realmente deletar a tarefa ${task.title}?`)
+            if (confirm){
+                axios.delete(`${config.apiUrl}/tasks/${task.id}`)
+                    .then( () => {
+                        const index = this.tasks.findIndex(t => t.id === task.id)
+                        this.tasks.splice(index, 1)
+                    })
+            }
+        },
         editTask(task) {
             axios.put(`${config.apiUrl}/tasks/${task.id}`, task)
-                .then( reponse => {
-                    let index = this.tasks.findIndex(t => t.id === task.id)
-                    this.tasks.splice(index, 1, reponse.data)
+                .then( response => {
+                    const index = this.tasks.findIndex(t => t.id === task.id)
+                    this.tasks.splice(index, 1, response.data)
                     this.reset()
                 })
         },
