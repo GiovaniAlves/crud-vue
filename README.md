@@ -1,4 +1,4 @@
-# Crud Vue.JS
+# CRUD Vue.JS
 
 ### Creating a task manager with Vue and Axios. 
 
