@@ -1,6 +1,6 @@
 # Crud Vue.JS
 
-### Using the Axios library to make Ajax calls to a REST API. 
+### Creating a task manager with Vue and Axios. 
 
 ## Project setup
 ```
